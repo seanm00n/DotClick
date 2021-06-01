@@ -1,12 +1,12 @@
-# DotClick
+#DotClick
  Arcade game like 'Whac a mole' created in Unity
  ※This app is unfinished
  
-# Controls
+#Controls
   will be add
   
-# Installing
+#Installing
  Before install this app, you need to ignore Play Protect
 
-# Development plan
+#Development plan
  Life doesn't always go as plan
