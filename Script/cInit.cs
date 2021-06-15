@@ -121,6 +121,28 @@ public class cInit : MonoBehaviour
     }
 
     public bool Initialize_01_Dot() {
+        int index01;
+        cVar.I.sDot = null;
+        cVar.I.sDot = new cVar.DOT_INFO[cVar.MAX_DOT_COLOR_NUM];
+
+        cVar.I.vDotColor = null;
+        cVar.I.vDotColor = new string[cVar.MAX_DOT_COLOR_NUM];
+
+        for (index01 = 0; index01 < cVar.MAX_DOT_COLOR_NUM; index01++) {
+            cVar.I.sDot[index01].cGameObject = null;
+            cVar.I.sDot[index01].cGameObject = GameObject.Find(cVar.I.vDotColor[index01]);
+            if (cVar.I.sDot[index01].cGameObject == null) {
+                cVar.I.QuitProcess("Error::sDot.cGameObject == null");
+                return false;
+            }
+            cVar.I.sDot[index01].cCollider = null;
+            cVar.I.sDot[index01].cCollider = cVar.I.sDot[index01].cGameObject.GetComponent<BoxCollider2D>();
+            if (cVar.I.sDot[index01].cCollider == null) {
+                cVar.I.QuitProcess("Error::sDot.cCollider == null");
+                return false;
+            }
+        }
+ 
         return true;
     }
     public bool Initialize_Main(){    

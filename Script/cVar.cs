@@ -11,18 +11,21 @@ public class cVar
     {
         public GameObject cGameObject; //참조할 오브젝트
         public BoxCollider2D cCollider; //충돌체
-        public int vPositionX; //좌표x
-        public int vPositionY; //좌표y
-        public int vAnimationIndex; //애니메이션상태
-        public Animator cAnimator; //애니메이터
     }
     public DOT_INFO[] sDot; //점 구조체
+
+    public const int DOT_COLOR_RED = 0;//색상(다른몬스터)
+    public const int DOT_COLOR_GREEN = 1;
+    public const int DOT_COLOR_BLUE = 2;
+    public const int MAX_DOT_COLOR_NUM = 3;
+    public string[] vDotColor;
+    public const int MAX_DOT_NUM = 1;
 
     public const int vFPS = 60;
     public int SCORE;
 
-    public const int POSITION_X = 500; //좌표최대치
-    public const int POSITION_Y = 300;
+    public const int MAX_POSITION_X = 500; //좌표최대치
+    public const int MAX_POSITION_Y = 300;
     
     public const int APPLICATION_STATE_MAIN = 0;//게임 상태
     public const int APPLICATION_STATE_GAME = 1;
@@ -63,17 +66,6 @@ public class cVar
     public const int BUTTON_GAOV_EXIT = 6;
     public const int MAX_BUTTON_NUM = 7;
 
-    public const int DOT_COLOR_RED = 0;//색상(다른몬스터)
-    public const int DOT_COLOR_GREEN = 1;
-    public const int DOT_COLOR_BLUE = 2;
-    public const int MAX_DOT_COLOR_NUM = 3;
-    public const int MAX_DOT_NUM = 1;
-
-    public const int ANIMATION_IDLE = 0;//출현
-    public const int ANIMATION_DEATH = 1;//클릭당함
-    public const int MAX_ANIMATION_NUM = 2;
-    public string[] vAnimationName;
-
     static public cVar pInstance;
     static public cVar I
     {
@@ -96,30 +88,5 @@ public class cVar
         #else
         Application.Quit();
         #endif
-    }
-
-    public void SetAnimation(int tAnimationIndex, ref DOT_INFO tDot)
-    {
-        int index01;
-
-        if (vAnimationName == null)
-        {
-            QuitProcess("Error::vAnimationName == null");
-            return;
-        }
-
-        if (tAnimationIndex < 0 || MAX_ANIMATION_NUM <= tAnimationIndex)
-        {
-            QuitProcess("Error::tAnimationIndex out of range");
-            return;
-        }
-        tDot.cAnimator.SetBool(vAnimationName[tAnimationIndex], true);
-        tDot.vAnimationIndex = tAnimationIndex;
-
-        for (index01 = 0; index01 < MAX_ANIMATION_NUM; index01++)
-        {
-            if (tAnimationIndex != index01)
-                tDot.cAnimator.SetBool(vAnimationName[index01], false);
-        }
     }
 }
