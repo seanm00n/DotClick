@@ -14,12 +14,22 @@ public class cVar
     }
     public DOT_INFO[] sDot; //점 구조체
 
-    public const int DOT_COLOR_RED = 0;//색상(다른몬스터)
+    public const int DOT_COLOR_BLUE = 0;//색상(다른몬스터)
     public const int DOT_COLOR_GREEN = 1;
-    public const int DOT_COLOR_BLUE = 2;
+    public const int DOT_COLOR_RED = 2;
     public const int MAX_DOT_COLOR_NUM = 3;
     public string[] vDotColor;
     public const int MAX_DOT_NUM = 1;
+
+    public struct TIMEGAGE_INFO {
+        public GameObject cGameObject; 
+    }
+    public TIMEGAGE_INFO[] sTimeGage;
+
+    public const int TIMEGAGE_01 = 0;
+    public const int TIMEGAGE_02 = 1;
+    public const int MAX_TIMEGAGE_NUM = 2;
+    public string[] vTimeGage;
 
     public const int vFPS = 60;
     public int SCORE;

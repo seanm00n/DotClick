@@ -114,6 +114,7 @@ public class cInit : MonoBehaviour
         }
         //
         Initialize_01_Dot();
+        Initialize_TimeGage();
         if (!Initialize_Main()) {
             return false;
         }
@@ -124,9 +125,20 @@ public class cInit : MonoBehaviour
         int index01;
         cVar.I.sDot = null;
         cVar.I.sDot = new cVar.DOT_INFO[cVar.MAX_DOT_COLOR_NUM];
+        if (cVar.I.sDot == null) {
+            cVar.I.QuitProcess("Error::sDot == null");
+            return false;
+        }
 
         cVar.I.vDotColor = null;
         cVar.I.vDotColor = new string[cVar.MAX_DOT_COLOR_NUM];
+        cVar.I.vDotColor[cVar.DOT_COLOR_BLUE] = "D1_Blue";
+        cVar.I.vDotColor[cVar.DOT_COLOR_GREEN] = "D2_Green";
+        cVar.I.vDotColor[cVar.DOT_COLOR_RED] = "D3_Red";
+        if (cVar.I.vDotColor == null) {
+            cVar.I.QuitProcess("Error::vDotColor == null");
+            return false;
+        }
 
         for (index01 = 0; index01 < cVar.MAX_DOT_COLOR_NUM; index01++) {
             cVar.I.sDot[index01].cGameObject = null;
@@ -141,8 +153,38 @@ public class cInit : MonoBehaviour
                 cVar.I.QuitProcess("Error::sDot.cCollider == null");
                 return false;
             }
+            cVar.I.sDot[index01].cGameObject.SetActive(false);
         }
- 
+        
+        return true;
+    }
+    public bool Initialize_TimeGage() {
+        int index01;
+        cVar.I.sTimeGage = null;
+        cVar.I.sTimeGage = new cVar.TIMEGAGE_INFO[cVar.MAX_TIMEGAGE_NUM];
+        if (cVar.I.sTimeGage == null) {
+            cVar.I.QuitProcess("Error::sTimeGage == null");
+            return false;
+        }
+
+        cVar.I.vTimeGage = null;
+        cVar.I.vTimeGage = new string[cVar.MAX_TIMEGAGE_NUM];
+        cVar.I.vTimeGage[cVar.TIMEGAGE_01] = "T1_Out";
+        cVar.I.vTimeGage[cVar.TIMEGAGE_02] = "T2_In";
+        if (cVar.I.vTimeGage == null) {
+            cVar.I.QuitProcess("Error::vTimeGage == null");
+            return false;
+        }
+
+        for (index01 = 0; index01 < cVar.MAX_TIMEGAGE_NUM; index01++) {
+            cVar.I.sTimeGage[index01].cGameObject = null;
+            cVar.I.sTimeGage[index01].cGameObject = GameObject.Find(cVar.I.vTimeGage[index01]);
+            if (cVar.I.sTimeGage[index01].cGameObject == null) {
+                cVar.I.QuitProcess("Error::sTimeGage.cGameObject == null");
+                return false;
+            }
+            cVar.I.sTimeGage[index01].cGameObject.SetActive(false);
+        }
         return true;
     }
     public bool Initialize_Main(){    

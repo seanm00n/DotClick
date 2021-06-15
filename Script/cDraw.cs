@@ -28,6 +28,11 @@ public class cDraw : MonoBehaviour
                 cVar.I.sButton.cButtonGameObject[cVar.BUTTON_MAIN_GAME].SetActive(true);
                 cVar.I.sButton.cButtonGameObject[cVar.BUTTON_MAIN_EXIT].SetActive(true);
                 //
+                //TimeGage
+                for (index01 = 0; index01 < cVar.MAX_TIMEGAGE_NUM; index01++) {
+                    cVar.I.sTimeGage[index01].cGameObject.SetActive(false);
+                }
+                //
                 break;
             case cVar.APPLICATION_STATE_GAME:
                 //Text
@@ -40,6 +45,11 @@ public class cDraw : MonoBehaviour
                     cVar.I.sButton.cButtonGameObject[index01].SetActive(false);
                 }
                 cVar.I.sButton.cButtonGameObject[cVar.BUTTON_PAUS].SetActive(true);
+                //
+                //TimeGage
+                for (index01 = 0; index01 < cVar.MAX_TIMEGAGE_NUM; index01++) {
+                    cVar.I.sTimeGage[index01].cGameObject.SetActive(true);
+                }
                 //
                 break;
             case cVar.APPLICATION_STATE_PAUS:
@@ -72,6 +82,11 @@ public class cDraw : MonoBehaviour
                 }
                 cVar.I.sButton.cButtonGameObject[cVar.BUTTON_GAOV_GAME].SetActive(true);
                 cVar.I.sButton.cButtonGameObject[cVar.BUTTON_GAOV_EXIT].SetActive(true);
+                //
+                //TimeGage
+                for (index01 = 0; index01 < cVar.MAX_TIMEGAGE_NUM; index01++) {
+                    cVar.I.sTimeGage[index01].cGameObject.SetActive(false);
+                }
                 //
                 break;
         }
